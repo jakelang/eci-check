@@ -2,11 +2,11 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror
 
 OBJ = main.o
-BIN = eci-cleanup
+BIN = eci-conform
 
-all: eci-cleanup
+all: eci-conform
 
-eci-cleanup: $(OBJ)
+eci-conform: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.c
