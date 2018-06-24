@@ -3,23 +3,13 @@
 #include <unistd.h>
 #include <string.h>
 
-#define ECIC_DEBUGGING 1
-
-#define ECIC_DEBUG(fmt, ...) \
-	do { if (ECIC_DEBUGGING) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
+#include "ecic.h"
 
 static void 
 print_usage_and_exit()
 {
 	printf("Usage: eci-cleanup infile.wast\n");
 	exit(EXIT_FAILURE);
-}
-
-static int
-program_main(const char *infile)
-{
-	ECIC_DEBUG("Attempting to open input file: %s\n", infile);
-	return 0;
 }
 
 int 
@@ -31,7 +21,7 @@ main(int argc, char **argv)
 	char infile[256] = { };
 	strncpy(infile, argv[1], strlen(argv[1]));
 
-	program_main(infile);
+	ecic_main(infile);
 
 	return EXIT_SUCCESS;
 }

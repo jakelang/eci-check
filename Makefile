@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 
-OBJ = main.o
+OBJ = main.o ecic.o
 BIN = eci-conform
 
 all: eci-conform
