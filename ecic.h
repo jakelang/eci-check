@@ -26,13 +26,41 @@
 #ifndef __ECIC_H
 #define __ECIC_H
 
-#define ECIC_DEBUGGING 1
+#define ECIC_DEBUG_VERBOSITY 1
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <err.h>
+#include <string.h>
 
-#define ECIC_DEBUG(fmt, ...) \
-	do { if (ECIC_DEBUGGING) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
+#define ECIC_DEBUG(debuglvl, ...) \
+	do { \
+		if (ECIC_DEBUG_VERBOSITY >= debuglvl) { \
+			fprintf(stderr, __VA_ARGS__); \
+			fprintf(stderr, "\n"); \
+		} \
+	} while (0)
 
-int ecic_main(const char *infile);
+#define ECIC_ASSERT(cond, msg) \
+	do { \
+		if (!(cond)) { \
+			fprintf(stderr, "eci-conform: "); \
+			fprintf(stderr, "%s\n", msg); \
+			exit(EXIT_FAILURE); \
+		} \
+	} while (0)
+
+#define ECIC_FORMATTED_ERR(cond, fmt) \
+	do { \
+		if (!(cond)) { \
+			fprintf(stderr, "eci-conform: "); \
+			if (fmt != NULL) \
+				fprintf(stderr, "%s: ", fmt); \
+			fprintf(stderr, "%s\n", strerror(errno)); \
+			exit(errno); \
+		} \
+	} while (0)
+
+int ecic_main(const char *inpath);
 
 #endif

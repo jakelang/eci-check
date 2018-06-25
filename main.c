@@ -25,7 +25,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 
 #include "ecic.h"
@@ -43,10 +42,10 @@ main(int argc, char **argv)
 	if (argc < 2)
 		print_usage_and_exit();
 	
-	char infile[256] = { };
-	strncpy(infile, argv[1], strlen(argv[1]));
+	char input_path[256] = { };
+	strncpy(input_path, argv[1], strlen(argv[1]));
 
-	ecic_main(infile);
+	ecic_main(input_path);
 
 	return EXIT_SUCCESS;
 }

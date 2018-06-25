@@ -22,12 +22,21 @@
  * SOFTWARE.
  */
 
+#include <stdio.h>
+#include <errno.h>
 
 #include "ecic.h"
 
 int
-ecic_main(const char *infile)
+ecic_main(const char *inpath)
 {
-	ECIC_DEBUG("Attempting to open input file: %s\n", infile);
+	ECIC_DEBUG(1, "Attempting to read input filepath: %s", inpath);
+
+	FILE *infile;
+
+	infile = fopen(inpath, "r");
+	
+	ECIC_FORMATTED_ERR(infile != NULL, inpath);
+
 	return 0;
 }
