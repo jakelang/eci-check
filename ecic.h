@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-
 #ifndef __ECIC_H
 #define __ECIC_H
 
