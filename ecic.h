@@ -60,6 +60,4 @@
 		} \
 	} while (0)
 
-int ecic_main(const char *inpath);
-
 #endif

@@ -44,7 +44,5 @@ main(int argc, char **argv)
 	char input_path[256] = { };
 	strncpy(input_path, argv[1], strlen(argv[1]));
 
-	ecic_main(input_path);
-
 	return EXIT_SUCCESS;
 }
