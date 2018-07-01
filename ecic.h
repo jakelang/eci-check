@@ -40,7 +40,7 @@
 		} \
 	} while (0)
 
-#define ECIC_ASSERT(cond, msg) \
+#define ECIC_REQUIRE(cond, msg) \
 	do { \
 		if (!(cond)) { \
 			fprintf(stderr, "eci-conform: "); \
@@ -49,7 +49,7 @@
 		} \
 	} while (0)
 
-#define ECIC_FORMATTED_ERR(cond, fmt) \
+#define ECIC_FORMATTED_REQUIRE(cond, fmt) \
 	do { \
 		if (!(cond)) { \
 			fprintf(stderr, "eci-conform: "); \
