@@ -23,12 +23,15 @@
  */
 
 #[macro_use] extern crate log;
+extern crate ecic;
 
 use std::env;
 use std::process;
 use std::fs::File;
 use std::path::Path;
 use std::io::prelude::*;
+
+use ecic::context::EcicContext;
 
 fn print_help_and_exit() -> ! {
     println!("Usage: eci-conform input.wast");
@@ -51,4 +54,16 @@ fn main() {
     let mut wast_input = String::new();
 
     fp.read_to_string(&mut wast_input);
+}
+
+#[cfg(test)]
+mod tests {
+    use ecic::context::EcicContext;
+    #[test]
+    fn init_ctx_from_str() {
+        let input = String::from("(module)");
+        let context = EcicContext::from_string(&input);
+        assert_eq!(8, input.len());
+        assert_eq!(8, context.wast_len());
+    }
 }
