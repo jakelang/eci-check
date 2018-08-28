@@ -31,7 +31,7 @@ use std::fs::File;
 use std::path::Path;
 use std::io::prelude::*;
 
-use ecic::context::EcicContext;
+use eci::context::EcicContext;
 
 fn print_help_and_exit() -> ! {
     println!("Usage: eci-conform input.wast");
