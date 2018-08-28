@@ -1,5 +1,5 @@
 /*
- * eci-conform: Ethereum WebAssembly contract compliance tool
+ * eci-check: Ethereum WebAssembly contract compliance tool
  *
  * Copyright (c) 2018 Jake Lang
  *
@@ -23,7 +23,7 @@
  */
 
 #[macro_use] extern crate log;
-extern crate ecic;
+extern crate eci;
 
 use std::env;
 use std::process;
