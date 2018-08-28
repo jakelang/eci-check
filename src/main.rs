@@ -31,10 +31,10 @@ use std::fs::File;
 use std::path::Path;
 use std::io::prelude::*;
 
-use eci::context::EcicContext;
+use eci::checker::EcicChecker;
 
 fn print_help_and_exit() -> ! {
-    println!("Usage: eci-conform input.wast");
+    println!("Usage: eci-conform input.wasm");
     process::exit(-1);
 }
 
@@ -51,7 +51,11 @@ fn main() {
     assert!(input_path.exists());
 
     let mut fp = File::open(input_path).unwrap();
-    let mut wast_input = String::new();
+    let mut wasm_input: Vec<u8> = Vec::new();
 
-    fp.read_to_string(&mut wast_input);
+    fp.read_to_end(&mut wasm_input);
+
+    let mut checker = EcicChecker::default(&wasm_input);
+    checker.fire();
+    checker.print_report()
 }
